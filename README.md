@@ -21,7 +21,7 @@ The application will provide a console-based menu with four main categories:
 
 ![System Architecture](docs/diagram.png)
 
-[Eisenhower Matrix:- ](docs/eisenhower-matrix.pdf)
+**Eisenhower Matrix:** [docs/eisenhower-matrix.pdf](docs/eisenhower-matrix.pdf)
 
 ## Tech Stack
 
