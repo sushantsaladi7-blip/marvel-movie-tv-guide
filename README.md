@@ -19,8 +19,9 @@ The application will provide a console-based menu with four main categories:
 3. **Non-MCU Media:** Explore Marvel movies and TV shows outside the MCU, organized into relevant sections.
 4. **Road to Secret Wars:** Follow a chronological viewing guide featuring important MCU and Non-MCU titles to watch before Avengers: Doomsday and Avengers: Secret Wars.
 
-
 ![System Architecture](docs/diagram.png)
+
+[Eisenhower Matrix:- ] (docs/eisenhower-matrix.pdf)
 
 ## Tech Stack
 
