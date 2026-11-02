@@ -1,0 +1,137 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="fghcjAoqHQjf8da8MyaR">
+    <mxGraphModel dx="964" dy="616" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="uv6FcJNNErea1DJoO8r3-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;" value="TMDB API&lt;br&gt;External information source for Marvel media" vertex="1">
+          <mxGeometry height="95" width="155" x="860" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="START&lt;br&gt;Main.java" vertex="1">
+          <mxGeometry height="60" width="120" x="260" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Main Menu&lt;br&gt;Displays 4 viewing categories" vertex="1">
+          <mxGeometry height="60" width="120" x="260" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-4" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="379.5" y="369.5" as="sourcePoint" />
+            <mxPoint x="420" y="369.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;User Input Handler&lt;/div&gt;&lt;div&gt;(User selects list by giving input)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="420" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-6" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;" value="">
+          <mxGeometry height="50" relative="1" width="50" x="-0.0727" as="geometry">
+            <Array as="points">
+              <mxPoint x="770" y="430" />
+              <mxPoint x="770" y="445" />
+            </Array>
+            <mxPoint x="770" y="445" as="sourcePoint" />
+            <mxPoint x="770" y="525" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-7" connectable="0" parent="uv6FcJNNErea1DJoO8r3-6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Organized&lt;div&gt;Media&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.1091" y="-1" as="geometry">
+            <mxPoint x="2" y="14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-8" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;" value="">
+          <mxGeometry height="50" relative="1" width="50" x="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="548.75" y="575" />
+              <mxPoint x="568.75" y="575" />
+            </Array>
+            <mxPoint x="680" y="575" as="sourcePoint" />
+            <mxPoint x="548.75" y="575" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-9" connectable="0" parent="uv6FcJNNErea1DJoO8r3-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Selected Output" vertex="1">
+          <mxGeometry relative="1" x="-0.1212" y="1" as="geometry">
+            <mxPoint x="15" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=center;labelPosition=center;verticalLabelPosition=middle;verticalAlign=top;" value="Viewing Lists&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="177.5" x="683" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-11" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=7.5;" value="Marvel Media CSV File" vertex="1">
+          <mxGeometry height="80" width="177.5" x="470" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-12" edge="1" parent="1" source="uv6FcJNNErea1DJoO8r3-1" style="endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;entryX=0.359;entryY=-0.014;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" target="uv6FcJNNErea1DJoO8r3-18" value="">
+          <mxGeometry height="50" relative="1" width="50" x="0.3869" as="geometry">
+            <Array as="points" />
+            <mxPoint x="810" y="275" as="sourcePoint" />
+            <mxPoint x="776.25" y="308.75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-13" connectable="0" parent="uv6FcJNNErea1DJoO8r3-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="HTTP Request (or)&lt;br&gt;GSON Response" vertex="1">
+          <mxGeometry relative="1" x="0.0007" y="2" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-14" edge="1" parent="1" source="uv6FcJNNErea1DJoO8r3-11" style="endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;exitX=1;exitY=1;exitDx=0;exitDy=-7.5;exitPerimeter=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points" />
+            <mxPoint x="210" y="310" as="sourcePoint" />
+            <mxPoint x="720" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-15" connectable="0" parent="uv6FcJNNErea1DJoO8r3-14" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Reads media records" vertex="1">
+          <mxGeometry relative="1" x="-0.3859" y="3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-16" edge="1" parent="1" source="uv6FcJNNErea1DJoO8r3-2" style="endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="uv6FcJNNErea1DJoO8r3-3" value="">
+          <mxGeometry height="50" relative="1" width="50" x="0.0316" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="310" />
+            </Array>
+            <mxPoint x="330" y="290" as="sourcePoint" />
+            <mxPoint x="330" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="1. MCU Release Order&lt;div&gt;2. MCU Chronological Order&lt;/div&gt;&lt;div&gt;3. Non-MCU Media&lt;/div&gt;&lt;div&gt;4. Road to Secret Wars&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="155" x="694.25" y="575" as="geometry" />
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;b&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Media Management &amp;amp; Organization&lt;/font&gt;&lt;/b&gt;&amp;nbsp;&lt;div&gt;Creates Movies &amp;amp; TV Shows Objects, stores them in ArrayList and sorts them using comparator&lt;/div&gt;" vertex="1">
+          <mxGeometry height="145" width="217.5" x="670" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-19" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="369.5" as="sourcePoint" />
+            <mxPoint x="670" y="369.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-20" connectable="0" parent="uv6FcJNNErea1DJoO8r3-19" style="edgeLabel;resizable=0;html=1;inheritText=1;;align=center;verticalAlign=middle;defaultLabelBackgroundColor=page;" value="Selected Category" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Console Output" vertex="1">
+          <mxGeometry height="60" width="120" x="430" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-22" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;defaultLabelBackgroundColor=page;" value="">
+          <mxGeometry height="50" relative="1" width="50" x="0.5972" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="630" />
+              <mxPoint x="430" y="630" />
+              <mxPoint x="319.5" y="630" />
+            </Array>
+            <mxPoint x="319.5" y="630" as="sourcePoint" />
+            <mxPoint x="319.5" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-23" connectable="0" parent="uv6FcJNNErea1DJoO8r3-22" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="Return to Main Menu" vertex="1">
+          <mxGeometry relative="1" x="0.5447" y="2" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uv6FcJNNErea1DJoO8r3-24" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;defaultLabelBackgroundColor=page;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="489.5" y="600" as="sourcePoint" />
+            <mxPoint x="489.5" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
