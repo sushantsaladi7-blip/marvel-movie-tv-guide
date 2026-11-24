@@ -1,4 +1,116 @@
+Eyes of Wakanda,TV Show,2025-08-01,0,true,false
+Captain America: The First Avenger,Movie,2011-07-22,1,true,true
+Agent Carter,TV Show,2015-01-06,2,true,false
+Captain Marvel,Movie,2019-03-08,3,true,false
+Iron Man,Movie,2008-05-02,4,true,false
+Iron Man 2,Movie,2010-05-07,5,true,false
+The Incredible Hulk,Movie,2008-06-13,6,true,false
+Thor,Movie,2011-05-06,7,true,false
 The Avengers,Movie,2012-05-04,8,true,true
-Deadpool,Movie,2016-02-14,20,false,false
-Avengers: Doomsday,Movie,2026-12-18,43,true,true
-Captain Marvel,Movie,2019-03-08,2,true,false
+Agents of S.H.I.E.L.D.,TV Show,2013-09-24,9,true,false
+Thor: The Dark World,Movie,2013-11-08,10,true,false
+Iron Man 3,Movie,2013-05-03,11,true,false
+Captain America: The Winter Soldier,Movie,2014-04-04,12,true,false
+Guardians of the Galaxy,Movie,2014-08-01,13,true,false
+I Am Groot,TV Show,2022-08-10,14,true,false
+Guardians of the Galaxy Vol. 2,Movie,2017-05-05,15,true,false
+Daredevil,TV Show,2015-04-10,16,true,false
+Jessica Jones,TV Show,2015-11-20,17,true,false
+Avengers: Age of Ultron,Movie,2015-05-01,18,true,false
+Ant-Man,Movie,2015-07-17,19,true,false
+Luke Cage,TV Show,2016-09-30,20,true,false
+Iron Fist,TV Show,2017-03-17,21,true,false
+The Defenders,TV Show,2017-08-18,22,true,false
+Captain America: Civil War,Movie,2016-05-06,23,true,false
+Black Widow,Movie,2021-07-09,24,true,false
+Black Panther,Movie,2018-02-16,25,true,false
+Inhumans,TV Show,2017-09-29,26,true,false
+Spider-Man: Homecoming,Movie,2017-07-07,27,true,false
+The Punisher,TV Show,2017-11-17,28,true,false
+Doctor Strange,Movie,2016-11-04,29,true,false
+Cloak & Dagger,TV Show,2018-06-07,30,true,false
+Thor: Ragnarok,Movie,2017-11-03,31,true,false
+Runaways,TV Show,2017-11-21,32,true,false
+Ant-Man and the Wasp,Movie,2018-07-06,33,true,false
+Avengers: Infinity War,Movie,2018-04-27,34,true,true
+Avengers: Endgame,Movie,2019-04-26,35,true,true
+Loki,TV Show,2021-06-09,36,true,true
+What If...?,TV Show,2021-08-11,37,true,false
+WandaVision,TV Show,2021-01-15,38,true,false
+Shang-Chi and the Legend of the Ten Rings,Movie,2021-09-03,39,true,true
+The Falcon and the Winter Soldier,TV Show,2021-03-19,40,true,false
+Spider-Man: Far From Home,Movie,2019-07-02,41,true,false
+Eternals,Movie,2021-11-05,42,true,false
+Spider-Man: No Way Home,Movie,2021-12-17,43,true,false
+Doctor Strange in the Multiverse of Madness,Movie,2022-05-06,44,true,true
+Hawkeye,TV Show,2021-11-24,45,true,false
+Moon Knight,TV Show,2022-03-30,46,true,false
+Black Panther: Wakanda Forever,Movie,2022-11-11,47,true,true
+Echo,TV Show,2024-01-09,48,true,false
+She-Hulk: Attorney at Law,TV Show,2022-08-18,49,true,false
+Ms. Marvel,TV Show,2022-06-08,50,true,false
+Thor: Love and Thunder,Movie,2022-07-08,51,true,true
+Ironheart,TV Show,2025-06-24,52,true,false
+Werewolf by Night,Special,2022-10-07,53,true,false
+The Guardians of the Galaxy Holiday Special,Special,2022-11-25,54,true,false
+Ant-Man and the Wasp: Quantumania,Movie,2023-02-17,55,true,false
+Guardians of the Galaxy Vol. 3,Movie,2023-05-05,56,true,false
+Secret Invasion,TV Show,2023-06-21,57,true,false
+The Marvels,Movie,2023-11-10,58,true,false
+X-Men '97,TV Show,2024-03-20,0,true,false
+Deadpool & Wolverine,Movie,2024-07-26,59,true,true
+Agatha All Along,TV Show,2024-09-18,60,true,false
+Your Friendly Neighborhood Spider-Man,TV Show,2025-01-29,0,true,false
+Daredevil: Born Again,TV Show,2025-03-04,61,true,false
+Captain America: Brave New World,Movie,2025-02-14,62,true,true
+Thunderbolts*,Movie,2025-05-02,63,true,true
+The Fantastic Four: First Steps,Movie,2025-07-25,64,true,true
+Marvel Zombies,TV Show,2025-10-03,0,true,false
+Wonder Man,TV Show,2026-01-27,65,true,false
+The Punisher: One Last Kill,Special,2026-05-12,66,true,false
+Spider-Man: Brand New Day,Movie,2026-07-31,67,true,true
+VisionQuest,TV Show,2026-10-14,68,true,true
+Avengers: Doomsday,Movie,2026-12-18,69,true,true
+Avengers: Secret Wars,Movie,2027-12-17,70,true,true
+Howard the Duck,Movie,1986-08-01,1,false,false
+Blade,Movie,1998-08-21,2,false,false
+X-Men,Movie,2000-07-14,3,false,true
+Blade II,Movie,2002-03-22,4,false,false
+Spider-Man,Movie,2002-05-03,5,false,false
+Daredevil,Movie,2003-02-14,6,false,false
+X2,Movie,2003-05-02,7,false,true
+Hulk,Movie,2003-06-20,8,false,false
+The Punisher,Movie,2004-04-16,9,false,false
+Spider-Man 2,Movie,2004-06-30,10,false,false
+Blade: Trinity,Movie,2004-12-08,11,false,false
+Elektra,Movie,2005-01-14,12,false,false
+Fantastic Four,Movie,2005-07-08,13,false,false
+X-Men: The Last Stand,Movie,2006-05-26,14,false,false
+Ghost Rider,Movie,2007-02-16,15,false,false
+Spider-Man 3,Movie,2007-05-04,16,false,false
+Fantastic Four: Rise of the Silver Surfer,Movie,2007-06-15,17,false,false
+Punisher: War Zone,Movie,2008-12-05,18,false,false
+X-Men Origins: Wolverine,Movie,2009-05-01,19,false,false
+X-Men: First Class,Movie,2011-06-03,20,false,false
+Ghost Rider: Spirit of Vengeance,Movie,2012-02-17,21,false,false
+The Amazing Spider-Man,Movie,2012-07-03,22,false,false
+The Wolverine,Movie,2013-07-26,23,false,false
+The Amazing Spider-Man 2,Movie,2014-05-02,24,false,false
+X-Men: Days of Future Past,Movie,2014-05-23,25,false,false
+Fantastic Four,Movie,2015-08-07,26,false,false
+Deadpool,Movie,2016-02-12,27,false,false
+X-Men: Apocalypse,Movie,2016-05-27,28,false,false
+Logan,Movie,2017-03-03,29,false,false
+Deadpool 2,Movie,2018-05-18,30,false,false
+Venom,Movie,2018-10-05,31,false,false
+Dark Phoenix,Movie,2019-06-07,32,false,false
+The New Mutants,Movie,2020-08-28,33,false,false
+Venom: Let There Be Carnage,Movie,2021-10-01,34,false,false
+Morbius,Movie,2022-04-01,35,false,false
+Madame Web,Movie,2024-02-14,36,false,false
+Venom: The Last Dance,Movie,2024-10-25,37,false,false
+Kraven the Hunter,Movie,2024-12-13,38,false,false
+Big Hero 6,Animated Movie,2014-11-07,1,false,false
+Spider-Man: Into the Spider-Verse,Animated Movie,2018-12-14,2,false,false
+Spider-Man: Across the Spider-Verse,Animated Movie,2023-06-02,3,false,false
+Spider-Man: Beyond the Spider-Verse,Animated Movie,2027-06-25,4,false,false

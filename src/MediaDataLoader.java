@@ -4,8 +4,7 @@ import java.time.LocalDate;
 
 public class MediaDataLoader {
     public void addFromCSV(MediaManager manager) {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("data/marvel_media.csv"));
+        try(BufferedReader br = new BufferedReader(new FileReader("data/marvel_media.csv"))) {
             String line = br.readLine();
             while (line != null) {
                 try {
@@ -20,7 +19,6 @@ public class MediaDataLoader {
                 }
                 line = br.readLine();
             }
-            br.close();
         } catch (Exception e) {
             IO.println("Try again");
         }
