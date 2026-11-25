@@ -9,10 +9,11 @@ public class MediaDataLoader {
             while (line != null) {
                 try {
                     String[] data = line.split(",");
-                    if (data.length != 6) {
+                    if (data.length != 7) {
+                        line = br.readLine();
                         continue;
                     }
-                    Media med = new Media(data[0], data[1], LocalDate.parse(data[2]), Integer.parseInt(data[3]), Boolean.parseBoolean(data[4]), Boolean.parseBoolean(data[5]));
+                    Media med = new Media(data[0], data[1], LocalDate.parse(data[2]), Integer.parseInt(data[3]), Boolean.parseBoolean(data[4]), Boolean.parseBoolean(data[5]), Boolean.parseBoolean(data[6]));
                     manager.addMediaObject(med);
                 } catch (Exception e) {
                     IO.println("Failed");

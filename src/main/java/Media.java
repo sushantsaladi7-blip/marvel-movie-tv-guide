@@ -6,14 +6,16 @@ public class Media {
     private int chronologyOrder;
     private boolean isMCU;
     private boolean secretWarsWatch;
+    private boolean watched;
 
-    public Media(String title, String type, LocalDate releaseDate, int chronologyOrder, boolean isMCU, boolean secretWarsWatch) {
+    public Media(String title, String type, LocalDate releaseDate, int chronologyOrder, boolean isMCU, boolean secretWarsWatch, boolean watched) {
         this.title = title;
         this.type = type;
         this.releaseDate = releaseDate;
         this.chronologyOrder = chronologyOrder;
         this.isMCU = isMCU;
         this.secretWarsWatch = secretWarsWatch;
+        this.watched = watched;
     }
 
     public String getTitle() {
@@ -38,6 +40,14 @@ public class Media {
 
     public boolean isSecretWarsWatch() {
         return secretWarsWatch;
+    }
+
+    public boolean getWatched() {
+        return watched;
+    }
+
+    public void setWatched(boolean watched) {
+        this.watched = watched;
     }
 
     @Override

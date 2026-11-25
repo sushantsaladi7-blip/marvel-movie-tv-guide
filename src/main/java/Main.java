@@ -1,10 +1,12 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.geometry.Pos;
@@ -82,6 +84,10 @@ public class Main extends Application {
             for (Media m : manager.getMCUByReleaseOrder()) {
                 Label l = new Label("" + i + ". " + m.toString());
                 CheckBox check = new CheckBox();
+                check.setSelected(m.getWatched());
+                check.setOnAction(c -> {
+                    m.setWatched(check.isSelected());
+                });
                 grid1.add(l, col, row);
                 grid1.add(check, col + 1, row);
                 col += 2;
@@ -95,8 +101,10 @@ public class Main extends Application {
             back.setOnAction(ee -> {
                 stage.setScene(scene);
             });
-            grid1.add(back, 0, 0);
-            Scene scene1 = new Scene(grid1);
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setContent(grid1);
+            VBox layout = new VBox(back, scrollPane);
+            Scene scene1 = new Scene(layout, 1000, 700);
             stage.setScene(scene1);
             stage.show();
         });
@@ -108,6 +116,10 @@ public class Main extends Application {
             for (Media m : manager.getMCUByChronologyOrder()) {
                 Label l = new Label("" + i + ". " + m.toString());
                 CheckBox check = new CheckBox();
+                check.setSelected(m.getWatched());
+                check.setOnAction(c -> {
+                    m.setWatched(check.isSelected());
+                });
                 grid2.add(l, col, row);
                 grid2.add(check, col + 1, row);
                 col += 2;
@@ -121,8 +133,10 @@ public class Main extends Application {
             back.setOnAction(ee -> {
                 stage.setScene(scene);
             });
-            grid2.add(back, 0, 0);
-            Scene scene2 = new Scene(grid2);
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setContent(grid2);
+            VBox layout = new VBox(back, scrollPane);
+            Scene scene2 = new Scene(layout, 1000, 700);
             stage.setScene(scene2);
             stage.show();
         });
@@ -134,6 +148,10 @@ public class Main extends Application {
             for (Media m : manager.getNonMCU()) {
                 Label l = new Label("" + i + ". " + m.toString());
                 CheckBox check = new CheckBox();
+                check.setSelected(m.getWatched());
+                check.setOnAction(c -> {
+                    m.setWatched(check.isSelected());
+                });
                 grid3.add(l, col, row);
                 grid3.add(check, col + 1, row);
                 col += 2;
@@ -160,6 +178,10 @@ public class Main extends Application {
             for (Media m : manager.getSecretWarsWatchOrder()) {
                 Label l = new Label("" + i + ". " + m.toString());
                 CheckBox check = new CheckBox();
+                check.setSelected(m.getWatched());
+                check.setOnAction(c -> {
+                    m.setWatched(check.isSelected());
+                });
                 grid4.add(l, col, row);
                 grid4.add(check, col + 1, row);
                 col += 2;
