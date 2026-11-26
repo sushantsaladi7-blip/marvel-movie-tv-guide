@@ -25,9 +25,7 @@ public class Main extends Application {
         stage.setTitle("Marvel Media Guide");
         stage.setWidth(1000);
         stage.setHeight(700);
-        VBox buttons = new VBox();
         Label label = new Label("Your journey to Avengers: Secret Wars");
-        label.setStyle("-fx-font-size: 26px; -fx-font-weight: bold;");
         label.setStyle(
             "-fx-font-size: 28px;" +
             "-fx-font-weight: bold;" +
@@ -52,13 +50,11 @@ public class Main extends Application {
         marvelview.setFitHeight(200);
         marvelview.setPreserveRatio(true);
         images.getChildren().addAll(mcuview, marvelview);
-        buttons.setAlignment(Pos.CENTER);
-        buttons.setSpacing(12);
+        GridPane buttons = new GridPane();
         for (Button button : new Button[]{
             button1, button2, button3, button4, button5
                 }) {
                     button.setPrefWidth(300);
-                    button.setStyle("-fx-font-size: 15px;");
                     button.setStyle(
                         "-fx-background-color: #263746;" +
                         "-fx-text-fill: white;" +
@@ -70,9 +66,15 @@ public class Main extends Application {
         MediaDataLoader loader = new MediaDataLoader();
         MediaManager manager = new MediaManager();
         loader.addFromCSV(manager);
-        buttons.getChildren().addAll(button1, button2, button3, button4, button5);
+        buttons.add(button1, 0, 0);
+        buttons.add(button2, 1, 0);
+        buttons.add(button3, 0, 1);
+        buttons.add(button4, 1, 1);
+        buttons.setHgap(20);
+        buttons.setVgap(20);
+        buttons.setAlignment(Pos.CENTER);
         VBox box = new VBox();
-        box.getChildren().addAll(label, images, buttons);
+        box.getChildren().addAll(label, images, buttons, button5);
         box.setAlignment(Pos.CENTER);
         box.setSpacing(25);
         box.setPadding(new Insets(30));
