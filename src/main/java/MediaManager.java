@@ -8,6 +8,10 @@ public class MediaManager {
         media.add(m);
     }
 
+    public ArrayList<Media> getMedia() {
+        return media;
+    }
+
     public ArrayList<Media> getMCUByReleaseOrder() {
         ArrayList<Media> mcu = new ArrayList<>();
         for (int i = 0; i < media.size(); i++) {

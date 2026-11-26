@@ -1,7 +1,6 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,6 +12,9 @@ import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.CheckBox;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -87,6 +89,14 @@ public class Main extends Application {
                 check.setSelected(m.getWatched());
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
+                    try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
+                        for (Media m1 : manager.getMedia()) {
+                            pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
+                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.getWatched());
+                        }
+                    } catch (FileNotFoundException fe) {
+                        fe.printStackTrace();
+                    }
                 });
                 grid1.add(l, col, row);
                 grid1.add(check, col + 1, row);
@@ -119,6 +129,14 @@ public class Main extends Application {
                 check.setSelected(m.getWatched());
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
+                    try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
+                        for (Media m1 : manager.getMedia()) {
+                            pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
+                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.getWatched());
+                        }
+                    } catch (FileNotFoundException fe) {
+                        fe.printStackTrace();
+                    }
                 });
                 grid2.add(l, col, row);
                 grid2.add(check, col + 1, row);
@@ -151,6 +169,14 @@ public class Main extends Application {
                 check.setSelected(m.getWatched());
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
+                    try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
+                        for (Media m1 : manager.getMedia()) {
+                            pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
+                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.getWatched());
+                        }
+                    } catch (FileNotFoundException fe) {
+                        fe.printStackTrace();
+                    }
                 });
                 grid3.add(l, col, row);
                 grid3.add(check, col + 1, row);
@@ -181,6 +207,14 @@ public class Main extends Application {
                 check.setSelected(m.getWatched());
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
+                    try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
+                        for (Media m1 : manager.getMedia()) {
+                            pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
+                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.getWatched());
+                        }
+                    } catch (FileNotFoundException fe) {
+                        fe.printStackTrace();
+                    }
                 });
                 grid4.add(l, col, row);
                 grid4.add(check, col + 1, row);
