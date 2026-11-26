@@ -52,6 +52,6 @@ public class Media {
 
     @Override
     public String toString() {
-        return getTitle() + " (" + getReleaseDate().getYear() + ")";
+        return getTitle() + " (" + getReleaseDate().getYear() + ") - " + getType();
     }
 }

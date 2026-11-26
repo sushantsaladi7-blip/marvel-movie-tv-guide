@@ -15,6 +15,8 @@ import javafx.scene.control.CheckBox;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -81,12 +83,25 @@ public class Main extends Application {
         box.setStyle("-fx-background-color: #101820;");
         Scene scene = new Scene(box);
         button1.setOnAction(e -> {
-            int row = 1;
+            int row = 0;
             int col = 0;
             int i = 1;
             GridPane grid1 = new GridPane();
+            grid1.setHgap(15);
+            grid1.setVgap(15);
+            grid1.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getMCUByReleaseOrder()) {
-                Label l = new Label("" + i + ". " + m.toString());
+                Label l;
+                if (m.isSecretWarsWatch()) {
+                    Text title = new Text("" + i + ". " + m.toString());
+                    Text important = new Text(" [Important for Secret Wars]");
+                    important.setStyle("-fx-fill: green;");
+                    TextFlow flow = new TextFlow(title, important);
+                    l = new Label();
+                    l.setGraphic(flow);
+                } else {
+                    l = new Label("" + i + ". " + m.toString());
+                }
                 CheckBox check = new CheckBox();
                 check.setSelected(m.getWatched());
                 check.setOnAction(c -> {
@@ -114,6 +129,7 @@ public class Main extends Application {
                 stage.setScene(scene);
             });
             ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setFitToWidth(true);
             scrollPane.setContent(grid1);
             VBox layout = new VBox(back, scrollPane);
             Scene scene1 = new Scene(layout, 1000, 700);
@@ -121,12 +137,25 @@ public class Main extends Application {
             stage.show();
         });
         button2.setOnAction(e -> {
-            int row = 1;
+            int row = 0;
             int col = 0;
             int i = 1;
             GridPane grid2 = new GridPane();
+            grid2.setHgap(15);
+            grid2.setVgap(15);
+            grid2.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getMCUByChronologyOrder()) {
-                Label l = new Label("" + i + ". " + m.toString());
+                Label l;
+                if (m.isSecretWarsWatch()) {
+                    Text title = new Text("" + i + ". " + m.toString());
+                    Text important = new Text(" [Important for Secret Wars]");
+                    important.setStyle("-fx-fill: green;");
+                    TextFlow flow = new TextFlow(title, important);
+                    l = new Label();
+                    l.setGraphic(flow);
+                } else {
+                    l = new Label("" + i + ". " + m.toString());
+                }
                 CheckBox check = new CheckBox();
                 check.setSelected(m.getWatched());
                 check.setOnAction(c -> {
@@ -154,6 +183,7 @@ public class Main extends Application {
                 stage.setScene(scene);
             });
             ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setFitToWidth(true);
             scrollPane.setContent(grid2);
             VBox layout = new VBox(back, scrollPane);
             Scene scene2 = new Scene(layout, 1000, 700);
@@ -161,12 +191,25 @@ public class Main extends Application {
             stage.show();
         });
         button3.setOnAction(e -> {
-            int row = 1;
+            int row = 0;
             int col = 0;
             int i = 1;
             GridPane grid3 = new GridPane();
+            grid3.setHgap(15);
+            grid3.setVgap(15);
+            grid3.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getNonMCU()) {
-                Label l = new Label("" + i + ". " + m.toString());
+                Label l;
+                if (m.isSecretWarsWatch()) {
+                    Text title = new Text("" + i + ". " + m.toString());
+                    Text important = new Text(" [Important for Secret Wars]");
+                    important.setStyle("-fx-fill: green;");
+                    TextFlow flow = new TextFlow(title, important);
+                    l = new Label();
+                    l.setGraphic(flow);
+                } else {
+                    l = new Label("" + i + ". " + m.toString());
+                }
                 CheckBox check = new CheckBox();
                 check.setSelected(m.getWatched());
                 check.setOnAction(c -> {
@@ -193,16 +236,22 @@ public class Main extends Application {
             back.setOnAction(ee -> {
                 stage.setScene(scene);
             });
-            grid3.add(back, 0, 0);
-            Scene scene3 = new Scene(grid3);
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setFitToWidth(true);
+            scrollPane.setContent(grid3);
+            VBox layout = new VBox(back, scrollPane);
+            Scene scene3 = new Scene(layout, 1000, 700);
             stage.setScene(scene3);
             stage.show();
         });
         button4.setOnAction(e -> {
-            int row = 1;
+            int row = 0;
             int col = 0;
             int i = 1;
             GridPane grid4 = new GridPane();
+            grid4.setHgap(15);
+            grid4.setVgap(15);
+            grid4.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getSecretWarsWatchOrder()) {
                 Label l = new Label("" + i + ". " + m.toString());
                 CheckBox check = new CheckBox();
@@ -231,8 +280,11 @@ public class Main extends Application {
             back.setOnAction(ee -> {
                 stage.setScene(scene);
             });
-            grid4.add(back, 0, 0);
-            Scene scene4 = new Scene(grid4);
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setFitToWidth(true);
+            scrollPane.setContent(grid4);
+            VBox layout = new VBox(back, scrollPane);
+            Scene scene4 = new Scene(layout, 1000, 700);
             stage.setScene(scene4);
             stage.show();
         });
