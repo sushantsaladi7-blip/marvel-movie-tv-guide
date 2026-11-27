@@ -1,39 +1,45 @@
 # Marvel Movie & TV Timeline Guide
 
-A Java-based GUI application that organizes MCU and Non-MCU movies and TV shows into viewing lists, including a guide to important titles leading up to *Avengers: Doomsday* and *Avengers: Secret Wars*.
+A Java-based JavaFX application that organizes Marvel movies and TV shows into viewing lists, helping users explore the Marvel Cinematic Universe (MCU) and other Marvel universes, including titles leading up to *Avengers: Doomsday* and *Avengers: Secret Wars*.
 
 ## The Problem
 
 Marvel has released numerous movies and TV shows across the MCU and other Marvel universes. For fans who stopped following the MCU after *Avengers: Endgame*, it can be difficult to understand which titles they should watch to catch up before the upcoming Avengers movies.
 
-Additionally, fans who want to explore Marvel media beyond the MCU may find it difficult to navigate titles across different universes and timelines.
+Additionally, fans interested in exploring Marvel media beyond the MCU may find it difficult to navigate titles across different universes and timelines.
 
-This project aims to organize Marvel media into structured viewing lists so users can easily explore titles and identify important ones to watch.
+This project addresses these challenges by organizing Marvel media into structured viewing lists, allowing users to explore different categories and track their viewing progress.
 
 ## How It Works
 
-The application provides a graphical user interface with four main categories:
+The application provides a graphical user interface with four main viewing categories:
 
-1. **MCU Movies, TV Shows & Special Presentations in Release Order:** Browse MCU media according to its original release order.
-2. **All MCU Media in Chronological Order:** Explore MCU movies, TV shows, and Special Presentations according to the chronological order of their stories.
-3. **Non-MCU Media:** Explore Marvel movies and TV shows outside the MCU, organized into relevant sections.
-4. **Road to Secret Wars:** Follow a chronological viewing guide featuring important MCU and Non-MCU titles to watch before *Avengers: Doomsday* and *Avengers: Secret Wars*.
+1. **MCU Release Order:** Browse MCU movies, TV shows, and Special Presentations according to their original release order.
+2. **MCU Chronological Order:** Explore MCU media according to the chronological order of their stories.
+3. **Non-MCU Release Order:** Browse Marvel movies and TV shows outside the MCU.
+4. **Road to Avengers: Secret Wars:** Follow a viewing guide featuring important MCU and Non-MCU titles leading up to *Avengers: Doomsday* and *Avengers: Secret Wars*.
 
-The application uses CSV files to store Marvel media information and track watched status. The TMDB API provides additional information, including movie and TV show posters, ratings, and overviews.
+Users can select a category from the home screen to view its corresponding list of media.
+
+Each title is displayed with its poster and title. Users can mark movies and TV shows as **Watched** or **Not Watched** using checkboxes. Their watched status is saved to the CSV file and persists after closing and reopening the application.
+
+The application also integrates **The Movie Database (TMDB) API** to retrieve movie and TV show posters and additional media information.
+
+## System Architecture
 
 ![System Architecture](docs/diagram.png)
 
-**Eisenhower Matrix:** [View Eisenhower Matrix](docs/eisenhower-matrix.pdf)
+**Eisenhower Matrix:** [View Project Prioritization Matrix](docs/eisenhower-matrix.pdf)
 
 ## Tech Stack
 
 - **Programming Language:** Java
 - **GUI Framework:** JavaFX
 - **Java Libraries and APIs:**
-  - Java Collections (ArrayList)
-  - Comparator
-  - Java HTTP Client
-  - File I/O (BufferedReader, PrintWriter, etc.)
+- Java Collections (`ArrayList`)
+- `Comparator`
+- Java HTTP Client
+- File I/O (`BufferedReader`, `PrintWriter`, etc.)
 - **External Library:** Gson
 - **Build Tool:** Maven
 - **External API:** The Movie Database (TMDB) API
@@ -46,7 +52,6 @@ The application uses CSV files to store Marvel media information and track watch
 
 - Java Development Kit (JDK)
 - Apache Maven
-- Visual Studio Code (recommended)
 - Git
 - A TMDB API Read Access Token
 
@@ -63,14 +68,14 @@ cd marvel-movie-tv-guide
 
 The application requires a TMDB API Read Access Token to retrieve media information.
 
-1. Create a TMDB account and obtain an API Read Access Token from your TMDB account settings.
+1. Create a TMDB account and obtain an API Read Access Token from your account settings.
 2. Set the token as an environment variable in your terminal:
 
 ```bash
 export TMDB_TOKEN='YOUR_TMDB_READ_ACCESS_TOKEN'
 ```
 
-3. Keep the token private. Do not commit API keys or access tokens to the GitHub repository.
+3. Keep your token private. Never commit API keys or access tokens to the GitHub repository.
 
 ### Running the Application
 
@@ -82,38 +87,23 @@ mvn clean javafx:run
 
 ## Usage
 
-When the application starts, users are greeted with a home screen containing four viewing categories:
+1. Launch the application to access the home screen.
+2. Select one of the four viewing categories.
+3. Browse the corresponding Marvel movies and TV shows.
+4. View media posters and titles.
+5. Use the checkboxes to mark titles as **Watched** or **Not Watched**.
+6. Return to the home screen to explore another category.
 
-1. **MCU Release Order**
-2. **MCU Chronology Order**
-3. **Non-MCU Release Order**
-4. **Road to Avengers: Secret Wars**
+Watched status is automatically saved to the CSV file, allowing viewing progress to persist between application sessions.
 
-Select a category to browse its corresponding list of Marvel movies and TV shows.
+## Future Plans
 
-Each title is displayed with its corresponding poster and information. Titles marked as important for the upcoming Avengers movies are highlighted in the relevant lists.
+Potential improvements for future versions include:
 
-Users can also:
-
-- Mark movies and TV shows as **Watched** or **Not Watched** using checkboxes.
-- Track their viewing progress across the different categories.
-- Have their watched status saved to the CSV file, allowing it to persist after closing and reopening the application.
-- Navigate back to the home screen to explore another category.
-
-Media posters and additional information are retrieved using the TMDB API.
-
-## Roadmap
-
-- [x] Create Java classes to represent Marvel movies and TV shows.
-- [x] Load Marvel media data from CSV files.
-- [x] Implement MCU media lists in release order and chronological order.
-- [x] Implement Non-MCU media lists.
-- [x] Implement the Road to Secret Wars viewing guide.
-- [x] Build the JavaFX graphical user interface.
-- [x] Integrate the TMDB API to retrieve media information and posters.
-- [x] Implement watched status tracking and CSV persistence.
-- [x] Improve the graphical interface and overall user experience.
-- [x] Test the application, fix bugs, and finalize the interface.
+- [ ] Add search functionality.
+- [ ] Add advanced filtering options.
+- [ ] Create individual movie and TV show detail pages.
+- [ ] Add personalized viewing recommendations.
 
 ## Author
 
