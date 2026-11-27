@@ -1,3 +1,4 @@
+package media;
 import java.time.LocalDate;
 public class Media {
     private String title;
@@ -42,7 +43,7 @@ public class Media {
         return secretWarsWatch;
     }
 
-    public boolean getWatched() {
+    public boolean isWatched() {
         return watched;
     }
 

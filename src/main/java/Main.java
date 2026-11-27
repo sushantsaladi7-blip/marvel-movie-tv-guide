@@ -1,5 +1,9 @@
+import tmdb.TMDBMediaDetails;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import media.Media;
+import media.MediaDataLoader;
+import media.MediaManager;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.Scene;
@@ -24,6 +28,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
+
         stage.setTitle("Marvel Media Guide");
         stage.setWidth(1000);
         stage.setHeight(700);
@@ -68,6 +73,11 @@ public class Main extends Application {
         MediaDataLoader loader = new MediaDataLoader();
         MediaManager manager = new MediaManager();
         loader.addFromCSV(manager);
+        TMDBMediaDetails tmdb = new TMDBMediaDetails();
+        tmdb.searchMovie(manager.getMedia());
+        String posterURL = tmdb.getPosterURL();
+        Image movie = new Image(posterURL);
+        ImageView movieview = new ImageView(movie);
         buttons.add(button1, 0, 0);
         buttons.add(button2, 1, 0);
         buttons.add(button3, 0, 1);
@@ -103,13 +113,13 @@ public class Main extends Application {
                     l = new Label("" + i + ". " + m.toString());
                 }
                 CheckBox check = new CheckBox();
-                check.setSelected(m.getWatched());
+                check.setSelected(m.isWatched());
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
                     try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
                         for (Media m1 : manager.getMedia()) {
                             pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
-                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.getWatched());
+                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.isWatched());
                         }
                     } catch (FileNotFoundException fe) {
                         fe.printStackTrace();
@@ -157,13 +167,13 @@ public class Main extends Application {
                     l = new Label("" + i + ". " + m.toString());
                 }
                 CheckBox check = new CheckBox();
-                check.setSelected(m.getWatched());
+                check.setSelected(m.isWatched());
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
                     try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
                         for (Media m1 : manager.getMedia()) {
                             pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
-                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.getWatched());
+                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.isWatched());
                         }
                     } catch (FileNotFoundException fe) {
                         fe.printStackTrace();
@@ -211,13 +221,13 @@ public class Main extends Application {
                     l = new Label("" + i + ". " + m.toString());
                 }
                 CheckBox check = new CheckBox();
-                check.setSelected(m.getWatched());
+                check.setSelected(m.isWatched());
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
                     try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
                         for (Media m1 : manager.getMedia()) {
                             pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
-                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.getWatched());
+                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.isWatched());
                         }
                     } catch (FileNotFoundException fe) {
                         fe.printStackTrace();
@@ -255,13 +265,13 @@ public class Main extends Application {
             for (Media m : manager.getSecretWarsWatchOrder()) {
                 Label l = new Label("" + i + ". " + m.toString());
                 CheckBox check = new CheckBox();
-                check.setSelected(m.getWatched());
+                check.setSelected(m.isWatched());
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
                     try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
                         for (Media m1 : manager.getMedia()) {
                             pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
-                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.getWatched());
+                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.isWatched());
                         }
                     } catch (FileNotFoundException fe) {
                         fe.printStackTrace();
