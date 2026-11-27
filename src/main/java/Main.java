@@ -95,8 +95,8 @@ public class Main extends Application {
             int col = 0;
             int i = 1;
             GridPane grid1 = new GridPane();
-            grid1.setHgap(15);
-            grid1.setVgap(15);
+            grid1.setHgap(40);
+            grid1.setVgap(30);
             grid1.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getMCUByReleaseOrder()) {
                 Image image = null;
@@ -109,8 +109,8 @@ public class Main extends Application {
                             if (name[0].equals(tmdb.getTitle())) {
                                 image = new Image(tmdb.getPosterURL());
                                 imageView = new ImageView(image);
-                                imageView.setFitWidth(350);
-                                imageView.setFitHeight(250);
+                                imageView.setFitWidth(180);
+                                imageView.setFitHeight(270);
                                 imageView.setPreserveRatio(true);
                                 break;
                             }
@@ -119,8 +119,8 @@ public class Main extends Application {
                             if (name[0].equals(tmdb.getTitle())) {
                                 image = new Image(tmdb.getPosterURL());
                                 imageView = new ImageView(image);
-                                imageView.setFitWidth(350);
-                                imageView.setFitHeight(250);
+                                imageView.setFitWidth(180);
+                                imageView.setFitHeight(270);
                                 imageView.setPreserveRatio(true);
                                 break;
                             }
@@ -129,8 +129,8 @@ public class Main extends Application {
                         if (m.getTitle().equals(tmdb.getTitle())) {
                             image = new Image(tmdb.getPosterURL());
                             imageView = new ImageView(image);
-                            imageView.setFitWidth(350);
-                            imageView.setFitHeight(250);
+                            imageView.setFitWidth(180);
+                            imageView.setFitHeight(270);
                             imageView.setPreserveRatio(true);
                             break;
                         }
@@ -147,10 +147,36 @@ public class Main extends Application {
                 } else {
                     l = new Label("" + i + ". " + m.toString());
                 }
+                l.setWrapText(true);
+                l.setMaxWidth(350);
+                l.setStyle(
+                    "-fx-font-family: 'Arial';" +
+                    "-fx-font-size: 17px;" +
+                    "-fx-font-weight: bold;" +
+                    "-fx-text-fill: #292929;"
+                );
                 CheckBox check = new CheckBox();
+                check.setStyle(
+                    "-fx-font-family: 'Arial';" +
+                    "-fx-font-size: 13px;" +
+                    "-fx-font-weight: bold;" +
+                    "-fx-text-fill: #333333;"
+                );
+                check.setScaleX(1.15);
+                check.setScaleY(1.15);
                 check.setSelected(m.isWatched());
+                if (m.isWatched()) {
+                    check.setText("Watched");
+                } else {
+                    check.setText("Not Watched");
+                }
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
+                    if (m.isWatched()) {
+                        check.setText("Watched");
+                    } else {
+                        check.setText("Not Watched");
+                    }
                     try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
                         for (Media m1 : manager.getMedia()) {
                             pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
@@ -160,15 +186,14 @@ public class Main extends Application {
                         fe.printStackTrace();
                     }
                 });
-                VBox movie = new VBox();
+                VBox movie = new VBox(10);
                 if (imageView != null) {
                     movie.getChildren().add(imageView);
                 }
-                movie.getChildren().add(l);
+                movie.getChildren().addAll(l, check);
                 grid1.add(movie, col, row);
-                grid1.add(check, col + 1, row);
-                col += 2;
-                if (col == 4) {
+                col++;
+                if (col == 2) {
                     col = 0;
                     row++;
                 }
@@ -191,8 +216,8 @@ public class Main extends Application {
             int col = 0;
             int i = 1;
             GridPane grid2 = new GridPane();
-            grid2.setHgap(15);
-            grid2.setVgap(15);
+            grid2.setHgap(40);
+            grid2.setVgap(30);
             grid2.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getMCUByChronologyOrder()) {
                 Image image = null;
@@ -205,8 +230,8 @@ public class Main extends Application {
                             if (name[0].equals(tmdb.getTitle())) {
                                 image = new Image(tmdb.getPosterURL());
                                 imageView = new ImageView(image);
-                                imageView.setFitWidth(350);
-                                imageView.setFitHeight(250);
+                                imageView.setFitWidth(180);
+                                imageView.setFitHeight(270);
                                 imageView.setPreserveRatio(true);
                                 break;
                             }
@@ -215,8 +240,8 @@ public class Main extends Application {
                             if (name[0].equals(tmdb.getTitle())) {
                                 image = new Image(tmdb.getPosterURL());
                                 imageView = new ImageView(image);
-                                imageView.setFitWidth(350);
-                                imageView.setFitHeight(250);
+                                imageView.setFitWidth(180);
+                                imageView.setFitHeight(270);
                                 imageView.setPreserveRatio(true);
                                 break;
                             }
@@ -225,8 +250,8 @@ public class Main extends Application {
                         if (m.getTitle().equals(tmdb.getTitle())) {
                             image = new Image(tmdb.getPosterURL());
                             imageView = new ImageView(image);
-                            imageView.setFitWidth(350);
-                            imageView.setFitHeight(250);
+                            imageView.setFitWidth(180);
+                            imageView.setFitHeight(270);
                             imageView.setPreserveRatio(true);
                             break;
                         }
@@ -243,10 +268,36 @@ public class Main extends Application {
                 } else {
                     l = new Label("" + i + ". " + m.toString());
                 }
+                l.setWrapText(true);
+                l.setMaxWidth(350);
+                l.setStyle(
+                    "-fx-font-family: 'Arial';" +
+                    "-fx-font-size: 17px;" +
+                    "-fx-font-weight: bold;" +
+                    "-fx-text-fill: #292929;"
+                );
                 CheckBox check = new CheckBox();
+                check.setStyle(
+                    "-fx-font-family: 'Arial';" +
+                    "-fx-font-size: 13px;" +
+                    "-fx-font-weight: bold;" +
+                    "-fx-text-fill: #333333;"
+                );
+                check.setScaleX(1.15);
+                check.setScaleY(1.15);
                 check.setSelected(m.isWatched());
+                if (m.isWatched()) {
+                    check.setText("Watched");
+                } else {
+                    check.setText("Not Watched");
+                }
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
+                    if (m.isWatched()) {
+                        check.setText("Watched");
+                    } else {
+                        check.setText("Not Watched");
+                    }
                     try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
                         for (Media m1 : manager.getMedia()) {
                             pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
@@ -256,15 +307,14 @@ public class Main extends Application {
                         fe.printStackTrace();
                     }
                 });
-                VBox movie = new VBox();
+                VBox movie = new VBox(10);
                 if (imageView != null) {
                     movie.getChildren().add(imageView);
                 }
-                movie.getChildren().add(l);
+                movie.getChildren().addAll(l, check);
                 grid2.add(movie, col, row);
-                grid2.add(check, col + 1, row);
-                col += 2;
-                if (col == 4) {
+                col++;
+                if (col == 2) {
                     col = 0;
                     row++;
                 }
@@ -287,8 +337,8 @@ public class Main extends Application {
             int col = 0;
             int i = 1;
             GridPane grid3 = new GridPane();
-            grid3.setHgap(15);
-            grid3.setVgap(15);
+            grid3.setHgap(40);
+            grid3.setVgap(30);
             grid3.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getNonMCU()) {
                 Image image = null;
@@ -297,8 +347,8 @@ public class Main extends Application {
                     if (m.getTitle().equals(tmdb.getTitle())) {
                         image = new Image(tmdb.getPosterURL());
                         imageView = new ImageView(image);
-                        imageView.setFitWidth(350);
-                        imageView.setFitHeight(250);
+                        imageView.setFitWidth(180);
+                        imageView.setFitHeight(270);
                         imageView.setPreserveRatio(true);
                         break;
                     }
@@ -314,10 +364,36 @@ public class Main extends Application {
                 } else {
                     l = new Label("" + i + ". " + m.toString());
                 }
+                l.setWrapText(true);
+                l.setMaxWidth(350);
+                l.setStyle(
+                    "-fx-font-family: 'Arial';" +
+                    "-fx-font-size: 17px;" +
+                    "-fx-font-weight: bold;" +
+                    "-fx-text-fill: #292929;"
+                );
                 CheckBox check = new CheckBox();
+                check.setStyle(
+                    "-fx-font-family: 'Arial';" +
+                    "-fx-font-size: 13px;" +
+                    "-fx-font-weight: bold;" +
+                    "-fx-text-fill: #333333;"
+                );
+                check.setScaleX(1.15);
+                check.setScaleY(1.15);
                 check.setSelected(m.isWatched());
+                if (m.isWatched()) {
+                    check.setText("Watched");
+                } else {
+                    check.setText("Not Watched");
+                }
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
+                    if (m.isWatched()) {
+                        check.setText("Watched");
+                    } else {
+                        check.setText("Not Watched");
+                    }
                     try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
                         for (Media m1 : manager.getMedia()) {
                             pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
@@ -327,15 +403,14 @@ public class Main extends Application {
                         fe.printStackTrace();
                     }
                 });
-                VBox movie = new VBox();
+                VBox movie = new VBox(10);
                 if (imageView != null) {
                     movie.getChildren().add(imageView);
                 }
-                movie.getChildren().add(l);
+                movie.getChildren().addAll(l, check);
                 grid3.add(movie, col, row);
-                grid3.add(check, col + 1, row);
-                col += 2;
-                if (col == 4) {
+                col++;
+                if (col == 2) {
                     col = 0;
                     row++;
                 }
@@ -358,8 +433,8 @@ public class Main extends Application {
             int col = 0;
             int i = 1;
             GridPane grid4 = new GridPane();
-            grid4.setHgap(15);
-            grid4.setVgap(15);
+            grid4.setHgap(40);
+            grid4.setVgap(30);
             grid4.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getSecretWarsWatchOrder()) {
                 Image image = null;
@@ -372,8 +447,8 @@ public class Main extends Application {
                             if (name[0].equals(tmdb.getTitle())) {
                                 image = new Image(tmdb.getPosterURL());
                                 imageView = new ImageView(image);
-                                imageView.setFitWidth(350);
-                                imageView.setFitHeight(250);
+                                imageView.setFitWidth(180);
+                                imageView.setFitHeight(270);
                                 imageView.setPreserveRatio(true);
                                 break;
                             }
@@ -400,10 +475,36 @@ public class Main extends Application {
                     }
                 }
                 Label l = new Label("" + i + ". " + m.toString());
+                l.setWrapText(true);
+                l.setMaxWidth(350);
+                l.setStyle(
+                    "-fx-font-family: 'Arial';" +
+                    "-fx-font-size: 17px;" +
+                    "-fx-font-weight: bold;" +
+                    "-fx-text-fill: #292929;"
+                );
                 CheckBox check = new CheckBox();
+                check.setStyle(
+                    "-fx-font-family: 'Arial';" +
+                    "-fx-font-size: 13px;" +
+                    "-fx-font-weight: bold;" +
+                    "-fx-text-fill: #333333;"
+                );
+                check.setScaleX(1.15);
+                check.setScaleY(1.15);
                 check.setSelected(m.isWatched());
+                if (m.isWatched()) {
+                    check.setText("Watched");
+                } else {
+                    check.setText("Not Watched");
+                }
                 check.setOnAction(c -> {
                     m.setWatched(check.isSelected());
+                    if (m.isWatched()) {
+                        check.setText("Watched");
+                    } else {
+                        check.setText("Not Watched");
+                    }
                     try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
                         for (Media m1 : manager.getMedia()) {
                             pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
@@ -413,15 +514,14 @@ public class Main extends Application {
                         fe.printStackTrace();
                     }
                 });
-                VBox movie = new VBox();
+                VBox movie = new VBox(10);
                 if (imageView != null) {
                     movie.getChildren().add(imageView);
                 }
-                movie.getChildren().add(l);
+                movie.getChildren().addAll(l, check);
                 grid4.add(movie, col, row);
-                grid4.add(check, col + 1, row);
-                col += 2;
-                if (col == 4) {
+                col++;
+                if (col == 2) {
                     col = 0;
                     row++;
                 }
