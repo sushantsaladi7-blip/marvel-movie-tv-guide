@@ -195,6 +195,43 @@ public class Main extends Application {
             grid2.setVgap(15);
             grid2.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getMCUByChronologyOrder()) {
+                Image image = null;
+                ImageView imageView = null;
+                for (TMDBMediaDetails tmdb : tmdbDetails) {
+                    if ((m.getType().equalsIgnoreCase("TV Show")
+                        || m.getType().equalsIgnoreCase("TVShow")) && (m.getTitle().contains(" Season"))) {
+                        if (m.getTitle().contains(": Season")) {
+                            String[] name = m.getTitle().split(": Season");
+                            if (name[0].equals(tmdb.getTitle())) {
+                                image = new Image(tmdb.getPosterURL());
+                                imageView = new ImageView(image);
+                                imageView.setFitWidth(350);
+                                imageView.setFitHeight(250);
+                                imageView.setPreserveRatio(true);
+                                break;
+                            }
+                        } else {
+                            String[] name = m.getTitle().split(" Season");
+                            if (name[0].equals(tmdb.getTitle())) {
+                                image = new Image(tmdb.getPosterURL());
+                                imageView = new ImageView(image);
+                                imageView.setFitWidth(350);
+                                imageView.setFitHeight(250);
+                                imageView.setPreserveRatio(true);
+                                break;
+                            }
+                        }
+                    } else {
+                        if (m.getTitle().equals(tmdb.getTitle())) {
+                            image = new Image(tmdb.getPosterURL());
+                            imageView = new ImageView(image);
+                            imageView.setFitWidth(350);
+                            imageView.setFitHeight(250);
+                            imageView.setPreserveRatio(true);
+                            break;
+                        }
+                    }
+                }
                 Label l;
                 if (m.isSecretWarsWatch()) {
                     Text title = new Text("" + i + ". " + m.toString());
@@ -219,7 +256,12 @@ public class Main extends Application {
                         fe.printStackTrace();
                     }
                 });
-                grid2.add(l, col, row);
+                VBox movie = new VBox();
+                if (imageView != null) {
+                    movie.getChildren().add(imageView);
+                }
+                movie.getChildren().add(l);
+                grid2.add(movie, col, row);
                 grid2.add(check, col + 1, row);
                 col += 2;
                 if (col == 4) {
@@ -320,6 +362,43 @@ public class Main extends Application {
             grid4.setVgap(15);
             grid4.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getSecretWarsWatchOrder()) {
+                Image image = null;
+                ImageView imageView = null;
+                for (TMDBMediaDetails tmdb : tmdbDetails) {
+                    if ((m.getType().equalsIgnoreCase("TV Show")
+                        || m.getType().equalsIgnoreCase("TVShow")) && (m.getTitle().contains(" Season"))) {
+                        if (m.getTitle().contains(": Season")) {
+                            String[] name = m.getTitle().split(": Season");
+                            if (name[0].equals(tmdb.getTitle())) {
+                                image = new Image(tmdb.getPosterURL());
+                                imageView = new ImageView(image);
+                                imageView.setFitWidth(350);
+                                imageView.setFitHeight(250);
+                                imageView.setPreserveRatio(true);
+                                break;
+                            }
+                        } else {
+                            String[] name = m.getTitle().split(" Season");
+                            if (name[0].equals(tmdb.getTitle())) {
+                                image = new Image(tmdb.getPosterURL());
+                                imageView = new ImageView(image);
+                                imageView.setFitWidth(350);
+                                imageView.setFitHeight(250);
+                                imageView.setPreserveRatio(true);
+                                break;
+                            }
+                        }
+                    } else {
+                        if (m.getTitle().equals(tmdb.getTitle())) {
+                            image = new Image(tmdb.getPosterURL());
+                            imageView = new ImageView(image);
+                            imageView.setFitWidth(350);
+                            imageView.setFitHeight(250);
+                            imageView.setPreserveRatio(true);
+                            break;
+                        }
+                    }
+                }
                 Label l = new Label("" + i + ". " + m.toString());
                 CheckBox check = new CheckBox();
                 check.setSelected(m.isWatched());
@@ -334,7 +413,12 @@ public class Main extends Application {
                         fe.printStackTrace();
                     }
                 });
-                grid4.add(l, col, row);
+                VBox movie = new VBox();
+                if (imageView != null) {
+                    movie.getChildren().add(imageView);
+                }
+                movie.getChildren().add(l);
+                grid4.add(movie, col, row);
                 grid4.add(check, col + 1, row);
                 col += 2;
                 if (col == 4) {
