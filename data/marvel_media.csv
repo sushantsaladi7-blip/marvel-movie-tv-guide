@@ -1,7 +1,7 @@
 Eyes of Wakanda,TV Show,2025-08-01,0,true,false,false
 Captain America: The First Avenger,Movie,2011-07-22,1,true,true,false
-Agent Carter: Season 1,TV Show,2015-01-06,2,true,false,false
-Agent Carter: Season 2,TV Show,2016-01-19,3,true,false,false
+Marvel's Agent Carter: Season 1,TV Show,2015-01-06,2,true,false,false
+Marvel's Agent Carter: Season 2,TV Show,2016-01-19,3,true,false,false
 Captain Marvel,Movie,2019-03-08,4,true,false,false
 Iron Man,Movie,2008-05-02,5,true,false,false
 Iron Man 2,Movie,2010-05-07,5,true,false,false
@@ -13,27 +13,27 @@ Iron Man 3,Movie,2013-05-03,10,true,false,false
 Captain America: The Winter Soldier,Movie,2014-04-04,12,true,false,false
 Guardians of the Galaxy,Movie,2014-08-01,13,true,false,false
 Guardians of the Galaxy Vol. 2,Movie,2017-05-05,14,true,false,false
-Daredevil: Season 1,TV Show,2015-04-10,15,true,false,false
-Jessica Jones: Season 1,TV Show,2015-11-20,16,true,false,false
+Marvel's Daredevil: Season 1,TV Show,2015-04-10,15,true,false,false
+Marvel's Jessica Jones: Season 1,TV Show,2015-11-20,16,true,false,false
 Avengers: Age of Ultron,Movie,2015-05-01,17,true,false,false
 Ant-Man,Movie,2015-07-17,18,true,false,false
-Daredevil: Season 2,TV Show,2016-03-18,19,true,false,false
-Luke Cage: Season 1,TV Show,2016-09-30,20,true,false,false
-Iron Fist: Season 1,TV Show,2017-03-17,21,true,false,false
-The Defenders,TV Show,2017-08-18,22,true,false,false
+Marvel's Daredevil: Season 2,TV Show,2016-03-18,19,true,false,false
+Marvel's Luke Cage: Season 1,TV Show,2016-09-30,20,true,false,false
+Marvel's Iron Fist: Season 1,TV Show,2017-03-17,21,true,false,false
+Marvel's The Defenders,TV Show,2017-08-18,22,true,false,false
 Captain America: Civil War,Movie,2016-05-06,23,true,false,false
 Black Widow,Movie,2021-07-09,24,true,false,false
 Black Panther,Movie,2018-02-16,25,true,false,false
-The Punisher: Season 1,TV Show,2017-11-17,26,true,false,false
+Marvel's The Punisher: Season 1,TV Show,2017-11-17,26,true,false,false
 Spider-Man: Homecoming,Movie,2017-07-07,27,true,false,false
 Doctor Strange,Movie,2016-11-04,28,true,false,false
-Jessica Jones: Season 2,TV Show,2018-03-08,29,true,false,false
-Luke Cage: Season 2,TV Show,2018-06-22,30,true,false,false
-Iron Fist: Season 2,TV Show,2018-09-07,31,true,false,false
-Daredevil: Season 3,TV Show,2018-10-19,32,true,false,false
+Marvel's Jessica Jones: Season 2,TV Show,2018-03-08,29,true,false,false
+Marvel's Luke Cage: Season 2,TV Show,2018-06-22,30,true,false,false
+Marvel's Iron Fist: Season 2,TV Show,2018-09-07,31,true,false,false
+Marvel's Daredevil: Season 3,TV Show,2018-10-19,32,true,false,false
 Thor: Ragnarok,Movie,2017-11-03,33,true,false,false
-The Punisher: Season 2,TV Show,2019-01-18,34,true,false,false
-Jessica Jones: Season 3,TV Show,2019-06-14,35,true,false,false
+Marvel's The Punisher: Season 2,TV Show,2019-01-18,34,true,false,false
+Marvel's Jessica Jones: Season 3,TV Show,2019-06-14,35,true,false,false
 Ant-Man and the Wasp,Movie,2018-07-06,36,true,false,false
 Avengers: Infinity War,Movie,2018-04-27,37,true,true,false
 Avengers: Endgame,Movie,2019-04-26,38,true,true,false
@@ -69,13 +69,13 @@ Your Friendly Neighborhood Spider-Man,TV Show,2025-01-29,-1,true,false,false
 Daredevil: Born Again Season 1,TV Show,2025-03-04,63,true,false,false
 Captain America: Brave New World,Movie,2025-02-14,64,true,true,false
 Thunderbolts*,Movie,2025-05-02,64,true,true,false
-The Fantastic Four: First Steps,Movie,2025-07-25,65,true,true,false
-Marvel Zombies,TV Show,2025-10-03,-1,true,false,false
+The Fantastic 4: First Steps,Movie,2025-07-25,65,true,true,false
+Marvel Zombies,TV Show,2025-09-24,-1,true,false,false
 Wonder Man,TV Show,2026-01-27,65,true,false,false
 Daredevil: Born Again Season 2,TV Show,2026-03-24,66,true,false,false
 The Punisher: One Last Kill,Special,2026-05-12,66,true,false,false
 Spider-Man: Brand New Day,Movie,2026-07-31,67,true,true,false
-VisionQuest,TV Show,2026-10-14,68,true,true,false
+VisionQuest,TV Show,2026-10-13,68,true,true,false
 Avengers: Doomsday,Movie,2026-12-18,69,true,true,false
 Avengers: Secret Wars,Movie,2027-12-17,70,true,true,false
 Howard the Duck,Movie,1986-08-01,0,false,false,false
@@ -98,7 +98,7 @@ Fantastic Four: Rise of the Silver Surfer,Movie,2007-06-15,0,false,false,false
 Punisher: War Zone,Movie,2008-12-05,0,false,false,false
 X-Men Origins: Wolverine,Movie,2009-05-01,0,false,false,false
 X-Men: First Class,Movie,2011-06-03,0,false,false,false
-Ghost Rider: Spirit of Vengeance,Movie,2012-02-17,0,false,false,false
+Ghost Rider: Spirit of Vengeance,Movie,2011-12-10,0,false,false,false
 The Amazing Spider-Man,Movie,2012-07-03,0,false,false,false
 The Wolverine,Movie,2013-07-26,0,false,false,false
 The Amazing Spider-Man 2,Movie,2014-05-02,0,false,false,false
@@ -119,4 +119,4 @@ Kraven the Hunter,Movie,2024-12-13,0,false,false,false
 Big Hero 6,Animated Movie,2014-11-07,0,false,false,false
 Spider-Man: Into the Spider-Verse,Animated Movie,2018-12-14,0,false,false,false
 Spider-Man: Across the Spider-Verse,Animated Movie,2023-06-02,0,false,false,false
-Spider-Man: Beyond the Spider-Verse,Animated Movie,2027-06-25,0,false,false,false
+Spider-Man: Beyond the Spider-Verse,Animated Movie,2027-06-18,0,false,false,false

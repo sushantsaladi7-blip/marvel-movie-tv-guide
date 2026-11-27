@@ -21,6 +21,8 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import tmdb.TMDBService;
+import java.util.ArrayList;
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -28,7 +30,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-
         stage.setTitle("Marvel Media Guide");
         stage.setWidth(1000);
         stage.setHeight(700);
@@ -73,11 +74,8 @@ public class Main extends Application {
         MediaDataLoader loader = new MediaDataLoader();
         MediaManager manager = new MediaManager();
         loader.addFromCSV(manager);
-        TMDBMediaDetails tmdb = new TMDBMediaDetails();
-        tmdb.searchMovie(manager.getMedia());
-        String posterURL = tmdb.getPosterURL();
-        Image movie = new Image(posterURL);
-        ImageView movieview = new ImageView(movie);
+        TMDBService tmdbService = new TMDBService();
+        ArrayList<TMDBMediaDetails> tmdbDetails = tmdbService.searchMedia(manager.getMedia());
         buttons.add(button1, 0, 0);
         buttons.add(button2, 1, 0);
         buttons.add(button3, 0, 1);
@@ -101,6 +99,43 @@ public class Main extends Application {
             grid1.setVgap(15);
             grid1.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getMCUByReleaseOrder()) {
+                Image image = null;
+                ImageView imageView = null;
+                for (TMDBMediaDetails tmdb : tmdbDetails) {
+                    if ((m.getType().equalsIgnoreCase("TV Show")
+                        || m.getType().equalsIgnoreCase("TVShow")) && (m.getTitle().contains(" Season"))) {
+                        if (m.getTitle().contains(": Season")) {
+                            String[] name = m.getTitle().split(": Season");
+                            if (name[0].equals(tmdb.getTitle())) {
+                                image = new Image(tmdb.getPosterURL());
+                                imageView = new ImageView(image);
+                                imageView.setFitWidth(350);
+                                imageView.setFitHeight(250);
+                                imageView.setPreserveRatio(true);
+                                break;
+                            }
+                        } else {
+                            String[] name = m.getTitle().split(" Season");
+                            if (name[0].equals(tmdb.getTitle())) {
+                                image = new Image(tmdb.getPosterURL());
+                                imageView = new ImageView(image);
+                                imageView.setFitWidth(350);
+                                imageView.setFitHeight(250);
+                                imageView.setPreserveRatio(true);
+                                break;
+                            }
+                        }
+                    } else {
+                        if (m.getTitle().equals(tmdb.getTitle())) {
+                            image = new Image(tmdb.getPosterURL());
+                            imageView = new ImageView(image);
+                            imageView.setFitWidth(350);
+                            imageView.setFitHeight(250);
+                            imageView.setPreserveRatio(true);
+                            break;
+                        }
+                    }
+                }
                 Label l;
                 if (m.isSecretWarsWatch()) {
                     Text title = new Text("" + i + ". " + m.toString());
@@ -125,7 +160,12 @@ public class Main extends Application {
                         fe.printStackTrace();
                     }
                 });
-                grid1.add(l, col, row);
+                VBox movie = new VBox();
+                if (imageView != null) {
+                    movie.getChildren().add(imageView);
+                }
+                movie.getChildren().add(l);
+                grid1.add(movie, col, row);
                 grid1.add(check, col + 1, row);
                 col += 2;
                 if (col == 4) {
@@ -209,6 +249,18 @@ public class Main extends Application {
             grid3.setVgap(15);
             grid3.setPadding(new Insets(5, 20, 20, 20));
             for (Media m : manager.getNonMCU()) {
+                Image image = null;
+                ImageView imageView = null;
+                for (TMDBMediaDetails tmdb : tmdbDetails) {
+                    if (m.getTitle().equals(tmdb.getTitle())) {
+                        image = new Image(tmdb.getPosterURL());
+                        imageView = new ImageView(image);
+                        imageView.setFitWidth(350);
+                        imageView.setFitHeight(250);
+                        imageView.setPreserveRatio(true);
+                        break;
+                    }
+                }
                 Label l;
                 if (m.isSecretWarsWatch()) {
                     Text title = new Text("" + i + ". " + m.toString());
@@ -233,7 +285,12 @@ public class Main extends Application {
                         fe.printStackTrace();
                     }
                 });
-                grid3.add(l, col, row);
+                VBox movie = new VBox();
+                if (imageView != null) {
+                    movie.getChildren().add(imageView);
+                }
+                movie.getChildren().add(l);
+                grid3.add(movie, col, row);
                 grid3.add(check, col + 1, row);
                 col += 2;
                 if (col == 4) {
