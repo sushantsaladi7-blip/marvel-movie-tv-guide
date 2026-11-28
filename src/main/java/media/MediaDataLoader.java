@@ -20,7 +20,7 @@ public class MediaDataLoader {
                         (!data[6].trim().equalsIgnoreCase("true") && !data[6].trim().equalsIgnoreCase("false"))) {
                         throw new Exception("Failed to load: " + line.split(",")[0] + "\n" + "Please enter either true or false for the last three parameters");
                     }
-                    // Only supported media types are accepted by the application and TMDB service
+                    //Only supported media types are accepted by the application and TMDB service
                     if (!data[1].trim().equalsIgnoreCase("Movie") && !data[1].trim().equalsIgnoreCase("TV Show")
                         && !data[1].trim().equalsIgnoreCase("TVShow") && !data[1].trim().equalsIgnoreCase("Special")
                         && !data[1].trim().equalsIgnoreCase("Animated Movie") && !data[1].trim().equalsIgnoreCase("AnimatedMovie")) {
@@ -31,12 +31,12 @@ public class MediaDataLoader {
                     manager.addMediaObject(med);
                 } catch (DateTimeParseException de) {
                     //If Release Date(LocalDate) is not valid
-                    // Skip records whose release dates cannot be parsed
+                    //Skip records whose release dates cannot be parsed
                     IO.println("Failed to load: " + line.split(",")[0]);
                     IO.println("Invalid Release Date");
                 } catch (NumberFormatException ne) {
                     //If the chronological order numbering is not valid
-                    // Skip records with invalid chronology order values
+                    //Skip records with invalid chronology order values
                     IO.println("Failed to load: " + line.split(",")[0]);
                     IO.println("Invalid Chronology Ordering");
                 } catch (Exception e) {
