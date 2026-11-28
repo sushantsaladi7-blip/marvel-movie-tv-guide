@@ -1,12 +1,12 @@
 package media;
 import java.time.LocalDate;
 public class Media {
-    private String title;
-    private String type;
-    private LocalDate releaseDate;
-    private int chronologyOrder;
-    private boolean isMCU;
-    private boolean secretWarsWatch;
+    private final String title;
+    private final String type;
+    private final LocalDate releaseDate;
+    private final int chronologyOrder;
+    private final boolean isMCU;
+    private final boolean secretWarsWatch;
     private boolean watched;
 
     public Media(String title, String type, LocalDate releaseDate, int chronologyOrder, boolean isMCU, boolean secretWarsWatch, boolean watched) {

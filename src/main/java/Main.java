@@ -71,11 +71,14 @@ public class Main extends Application {
                         "-fx-cursor: hand;"
                     );
         }
+
+        // Load media records from marvel_media.csv file and retrieve their corresponding TMDB details.
         MediaDataLoader loader = new MediaDataLoader();
         MediaManager manager = new MediaManager();
         loader.addFromCSV(manager);
         TMDBService tmdbService = new TMDBService();
         ArrayList<TMDBMediaDetails> tmdbDetails = tmdbService.searchMedia(manager.getMedia());
+
         buttons.add(button1, 0, 0);
         buttons.add(button2, 1, 0);
         buttons.add(button3, 0, 1);
@@ -90,6 +93,8 @@ public class Main extends Application {
         box.setPadding(new Insets(30));
         box.setStyle("-fx-background-color: #101820;");
         Scene scene = new Scene(box);
+
+        // Each category button displays its corresponding sorted media list
         button1.setOnAction(e -> {
             buttonAction(stage, scene, manager.getMCUByReleaseOrder(), manager, tmdbDetails);
         });
@@ -125,9 +130,11 @@ public class Main extends Application {
             Image image = null;
             ImageView imageView = null;
             for (TMDBMediaDetails tmdbMediaDetails : tmdbDetails) {
+                // Match TV show seasons with their main show title because TMDB stores season details under the show's title
                 if ((media.getType().equalsIgnoreCase("TV Show")
                     || media.getType().equalsIgnoreCase("TVShow")) && (media.getTitle().contains(" Season"))) {
                     if (media.getTitle().contains(": Season")) {
+                        // Remove the season suffix because TMDB searches for the TV show's main title
                         String[] name = media.getTitle().split(": Season");
                         if (name[0].equals(tmdbMediaDetails.getTitle())) {
                             image = new Image(tmdbMediaDetails.getPosterURL());
@@ -161,7 +168,9 @@ public class Main extends Application {
             }
             Label label;
             if (media.isSecretWarsWatch()) {
+                // Highlight Secret Wars watch-list titles in other categories
                 if (mediaList.equals(manager.getSecretWarsWatchOrder())) {
+                    //If mediaList is already a watch order for Secret Wars, it does not need to display " [Important for Secret Wars]" after the media.toString()
                     label = new Label("" + mediaNumber + ". " + media.toString());
                 } else {
                     Text title = new Text("" + mediaNumber + ". " + media.toString());
@@ -197,6 +206,7 @@ public class Main extends Application {
             } else {
                 check.setText("Not Watched");
             }
+            // Update the watched status and save all media records so progress persists even if the program is closed, or if we return to homepage and choose another category
             check.setOnAction(c -> {
                 media.setWatched(check.isSelected());
                 if (media.isWatched()) {
@@ -221,6 +231,7 @@ public class Main extends Application {
             grid.add(mediaBox, col, row);
             col++;
             if (col == 2) {
+                // Place two media entries in each row of the viewing grid
                 col = 0;
                 row++;
             }

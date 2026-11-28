@@ -21,6 +21,7 @@ public class TMDBService {
         HttpClient client = HttpClient.newHttpClient();
         ArrayList<TMDBMediaDetails> detailsList = new ArrayList<>();
         for (Media m : mediaList) {
+            // Use different TMDB search endpoints for movies and TV shows
             String endpoint;
             if (m.getType().equalsIgnoreCase("Movie") || m.getType().equalsIgnoreCase("Animated Movie")
                 || m.getType().equalsIgnoreCase("Special")) {
@@ -32,6 +33,7 @@ public class TMDBService {
                 continue;
             }
             String query;
+            // Remove the season suffix because TMDB searches for the TV show's main title
             if (endpoint.equals("tv") && m.getTitle().contains(" Season")) {
                 String[] name = m.getTitle().split(" Season");
                 query = URLEncoder.encode(name[0], StandardCharsets.UTF_8);
@@ -39,6 +41,7 @@ public class TMDBService {
                 query = URLEncoder.encode(m.getTitle(), StandardCharsets.UTF_8);
             }
             String yearParameter = "";
+            // Restrict movie searches by release year to help distinguish titles with the same name
             if (endpoint.equals("movie") && m.getReleaseDate() != null) {
                 yearParameter = "&primary_release_year=" + m.getReleaseDate().getYear();
             }
@@ -58,6 +61,7 @@ public class TMDBService {
                 e.printStackTrace();
                 continue;
             } catch (InterruptedException e) {
+                // Restore the interrupt status so other parts of the application can detect the interruption.
                 Thread.currentThread().interrupt();
                 e.printStackTrace();
                 return detailsList;
@@ -80,6 +84,7 @@ public class TMDBService {
             if (first.get("poster_path").isJsonNull()) {
                 posterURL = null;
             } else {
+                // TMDB returns a poster path for the the first one in the search results
                 String posterPath = first.get("poster_path").getAsString();
                 String baseURL = "https://image.tmdb.org/t/p/w500";
                 posterURL = baseURL + posterPath;

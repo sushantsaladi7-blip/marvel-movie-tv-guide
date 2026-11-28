@@ -2,11 +2,11 @@ package tmdb;
 import media.Media;
 
 public class TMDBMediaDetails {
-    private String posterURL;
-    private double rating;
-    private String title;
-    private String overview;
-    private Media media;
+    private final String posterURL;
+    private final double rating;
+    private final String title;
+    private final String overview;
+    private final Media media;
 
     public TMDBMediaDetails(String posterURL, double rating, String title, String overview, Media media) {
         this.posterURL = posterURL;
