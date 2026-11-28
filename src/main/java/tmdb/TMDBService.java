@@ -13,6 +13,11 @@ import com.google.gson.JsonParser;
 
 public class TMDBService {
     public ArrayList<TMDBMediaDetails> searchMedia(ArrayList<Media> mediaList) {
+        String token = System.getenv("TMDB_TOKEN");
+        if (token == null || token.isBlank()) {
+            System.out.println("TMDB_TOKEN environment variable is missing.");
+            return new ArrayList<>();
+        }
         HttpClient client = HttpClient.newHttpClient();
         ArrayList<TMDBMediaDetails> detailsList = new ArrayList<>();
         for (Media m : mediaList) {
@@ -40,7 +45,7 @@ public class TMDBService {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("https://api.themoviedb.org/3/search/"+ endpoint + "?query=" + query + yearParameter))
                     .header("Authorization",
-                            "Bearer " + System.getenv("TMDB_TOKEN"))
+                            "Bearer " + token)
                     .build();
             HttpResponse<String> response = null;
             try {

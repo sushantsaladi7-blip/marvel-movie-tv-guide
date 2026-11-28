@@ -39,10 +39,10 @@ public class Main extends Application {
             "-fx-font-weight: bold;" +
             "-fx-text-fill: white;"
         );
-        Image mcu = new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBaOf7CuKx_qKRzyRFAID-p0lzBSUUx5waQIpgxzLDDA&s=10");
-        Image marvel = new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1G8qEy2fGoqCC5znOnfF-MkOqvEBNAxvxkXx3l1t8kg&s=10");
-        ImageView mcuview = new ImageView(mcu);
-        ImageView marvelview= new ImageView(marvel);
+        Image mcuImage = new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBaOf7CuKx_qKRzyRFAID-p0lzBSUUx5waQIpgxzLDDA&s=10");
+        Image marvelImage = new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1G8qEy2fGoqCC5znOnfF-MkOqvEBNAxvxkXx3l1t8kg&s=10");
+        ImageView mcuImageView = new ImageView(mcuImage);
+        ImageView marvelImageView= new ImageView(marvelImage);
         Button button1 = new Button("MCU Release Order");
         Button button2 = new Button("MCU Chronology Order");
         Button button3 = new Button("Non-MCU Release Order");
@@ -51,13 +51,13 @@ public class Main extends Application {
         HBox images = new HBox();
         images.setAlignment(Pos.CENTER);
         images.setSpacing(30);
-        mcuview.setFitWidth(350);
-        mcuview.setFitHeight(250);
-        mcuview.setPreserveRatio(true);
-        marvelview.setFitWidth(350);
-        marvelview.setFitHeight(200);
-        marvelview.setPreserveRatio(true);
-        images.getChildren().addAll(mcuview, marvelview);
+        mcuImageView.setFitWidth(350);
+        mcuImageView.setFitHeight(250);
+        mcuImageView.setPreserveRatio(true);
+        marvelImageView.setFitWidth(350);
+        marvelImageView.setFitHeight(200);
+        marvelImageView.setPreserveRatio(true);
+        images.getChildren().addAll(mcuImageView, marvelImageView);
         GridPane buttons = new GridPane();
         for (Button button : new Button[]{
             button1, button2, button3, button4, button5
@@ -91,164 +91,56 @@ public class Main extends Application {
         box.setStyle("-fx-background-color: #101820;");
         Scene scene = new Scene(box);
         button1.setOnAction(e -> {
-            int row = 0;
-            int col = 0;
-            int i = 1;
-            GridPane grid1 = new GridPane();
-            grid1.setHgap(40);
-            grid1.setVgap(30);
-            grid1.setPadding(new Insets(5, 20, 20, 20));
-            for (Media m : manager.getMCUByReleaseOrder()) {
-                Image image = null;
-                ImageView imageView = null;
-                for (TMDBMediaDetails tmdb : tmdbDetails) {
-                    if ((m.getType().equalsIgnoreCase("TV Show")
-                        || m.getType().equalsIgnoreCase("TVShow")) && (m.getTitle().contains(" Season"))) {
-                        if (m.getTitle().contains(": Season")) {
-                            String[] name = m.getTitle().split(": Season");
-                            if (name[0].equals(tmdb.getTitle())) {
-                                image = new Image(tmdb.getPosterURL());
-                                imageView = new ImageView(image);
-                                imageView.setFitWidth(180);
-                                imageView.setFitHeight(270);
-                                imageView.setPreserveRatio(true);
-                                break;
-                            }
-                        } else {
-                            String[] name = m.getTitle().split(" Season");
-                            if (name[0].equals(tmdb.getTitle())) {
-                                image = new Image(tmdb.getPosterURL());
-                                imageView = new ImageView(image);
-                                imageView.setFitWidth(180);
-                                imageView.setFitHeight(270);
-                                imageView.setPreserveRatio(true);
-                                break;
-                            }
-                        }
-                    } else {
-                        if (m.getTitle().equals(tmdb.getTitle())) {
-                            image = new Image(tmdb.getPosterURL());
-                            imageView = new ImageView(image);
-                            imageView.setFitWidth(180);
-                            imageView.setFitHeight(270);
-                            imageView.setPreserveRatio(true);
-                            break;
-                        }
-                    }
-                }
-                Label l;
-                if (m.isSecretWarsWatch()) {
-                    Text title = new Text("" + i + ". " + m.toString());
-                    Text important = new Text(" [Important for Secret Wars]");
-                    important.setStyle("-fx-fill: green;");
-                    TextFlow flow = new TextFlow(title, important);
-                    l = new Label();
-                    l.setGraphic(flow);
-                } else {
-                    l = new Label("" + i + ". " + m.toString());
-                }
-                l.setWrapText(true);
-                l.setMaxWidth(350);
-                l.setStyle(
-                    "-fx-font-family: 'Arial';" +
-                    "-fx-font-size: 17px;" +
-                    "-fx-font-weight: bold;" +
-                    "-fx-text-fill: #292929;"
-                );
-                CheckBox check = new CheckBox();
-                check.setStyle(
-                    "-fx-font-family: 'Arial';" +
-                    "-fx-font-size: 13px;" +
-                    "-fx-font-weight: bold;" +
-                    "-fx-text-fill: #333333;"
-                );
-                check.setScaleX(1.15);
-                check.setScaleY(1.15);
-                check.setSelected(m.isWatched());
-                if (m.isWatched()) {
-                    check.setText("Watched");
-                } else {
-                    check.setText("Not Watched");
-                }
-                check.setOnAction(c -> {
-                    m.setWatched(check.isSelected());
-                    if (m.isWatched()) {
-                        check.setText("Watched");
-                    } else {
-                        check.setText("Not Watched");
-                    }
-                    try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
-                        for (Media m1 : manager.getMedia()) {
-                            pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
-                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.isWatched());
-                        }
-                    } catch (FileNotFoundException fe) {
-                        fe.printStackTrace();
-                    }
-                });
-                VBox movie = new VBox(10);
-                if (imageView != null) {
-                    movie.getChildren().add(imageView);
-                }
-                movie.getChildren().addAll(l, check);
-                grid1.add(movie, col, row);
-                col++;
-                if (col == 2) {
-                    col = 0;
-                    row++;
-                }
-                i++;
-            }
-            Button back = new Button("Back to HomePage");
-            back.setOnAction(ee -> {
-                stage.setScene(scene);
-            });
-            ScrollPane scrollPane = new ScrollPane();
-            scrollPane.setFitToWidth(true);
-            scrollPane.setContent(grid1);
-            VBox layout = new VBox(back, scrollPane);
-            Scene scene1 = new Scene(layout, 1000, 700);
-            stage.setScene(scene1);
-            stage.show();
+            buttonAction(stage, scene, manager.getMCUByReleaseOrder(), manager, tmdbDetails);
         });
+
         button2.setOnAction(e -> {
-            int row = 0;
-            int col = 0;
-            int i = 1;
-            GridPane grid2 = new GridPane();
-            grid2.setHgap(40);
-            grid2.setVgap(30);
-            grid2.setPadding(new Insets(5, 20, 20, 20));
-            for (Media m : manager.getMCUByChronologyOrder()) {
-                Image image = null;
-                ImageView imageView = null;
-                for (TMDBMediaDetails tmdb : tmdbDetails) {
-                    if ((m.getType().equalsIgnoreCase("TV Show")
-                        || m.getType().equalsIgnoreCase("TVShow")) && (m.getTitle().contains(" Season"))) {
-                        if (m.getTitle().contains(": Season")) {
-                            String[] name = m.getTitle().split(": Season");
-                            if (name[0].equals(tmdb.getTitle())) {
-                                image = new Image(tmdb.getPosterURL());
-                                imageView = new ImageView(image);
-                                imageView.setFitWidth(180);
-                                imageView.setFitHeight(270);
-                                imageView.setPreserveRatio(true);
-                                break;
-                            }
-                        } else {
-                            String[] name = m.getTitle().split(" Season");
-                            if (name[0].equals(tmdb.getTitle())) {
-                                image = new Image(tmdb.getPosterURL());
-                                imageView = new ImageView(image);
-                                imageView.setFitWidth(180);
-                                imageView.setFitHeight(270);
-                                imageView.setPreserveRatio(true);
-                                break;
-                            }
+            buttonAction(stage, scene, manager.getMCUByChronologyOrder(), manager, tmdbDetails);
+        });
+
+        button3.setOnAction(e -> {
+            buttonAction(stage, scene, manager.getNonMCU(), manager, tmdbDetails);
+        });
+
+        button4.setOnAction(e -> {
+            buttonAction(stage, scene, manager.getSecretWarsWatchOrder(), manager, tmdbDetails);
+        });
+
+        button5.setOnAction(e -> {
+            stage.close();
+        });
+        stage.setScene(scene);
+        stage.show();
+    }
+
+     public void buttonAction(Stage stage, Scene homeScene, ArrayList<Media> mediaList, MediaManager manager, ArrayList<TMDBMediaDetails> tmdbDetails) {
+        int row = 0;
+        int col = 0;
+        int mediaNumber = 1;
+        GridPane grid = new GridPane();
+        grid.setHgap(40);
+        grid.setVgap(30);
+        grid.setPadding(new Insets(5, 20, 20, 20));
+        for (Media media : mediaList) {
+            Image image = null;
+            ImageView imageView = null;
+            for (TMDBMediaDetails tmdbMediaDetails : tmdbDetails) {
+                if ((media.getType().equalsIgnoreCase("TV Show")
+                    || media.getType().equalsIgnoreCase("TVShow")) && (media.getTitle().contains(" Season"))) {
+                    if (media.getTitle().contains(": Season")) {
+                        String[] name = media.getTitle().split(": Season");
+                        if (name[0].equals(tmdbMediaDetails.getTitle())) {
+                            image = new Image(tmdbMediaDetails.getPosterURL());
+                            imageView = new ImageView(image);
+                            imageView.setFitWidth(180);
+                            imageView.setFitHeight(270);
+                            imageView.setPreserveRatio(true);
+                            break;
                         }
                     } else {
-                        if (m.getTitle().equals(tmdb.getTitle())) {
-                            image = new Image(tmdb.getPosterURL());
+                        String[] name = media.getTitle().split(" Season");
+                        if (name[0].equals(tmdbMediaDetails.getTitle())) {
+                            image = new Image(tmdbMediaDetails.getPosterURL());
                             imageView = new ImageView(image);
                             imageView.setFitWidth(180);
                             imageView.setFitHeight(270);
@@ -256,96 +148,9 @@ public class Main extends Application {
                             break;
                         }
                     }
-                }
-                Label l;
-                if (m.isSecretWarsWatch()) {
-                    Text title = new Text("" + i + ". " + m.toString());
-                    Text important = new Text(" [Important for Secret Wars]");
-                    important.setStyle("-fx-fill: green;");
-                    TextFlow flow = new TextFlow(title, important);
-                    l = new Label();
-                    l.setGraphic(flow);
                 } else {
-                    l = new Label("" + i + ". " + m.toString());
-                }
-                l.setWrapText(true);
-                l.setMaxWidth(350);
-                l.setStyle(
-                    "-fx-font-family: 'Arial';" +
-                    "-fx-font-size: 17px;" +
-                    "-fx-font-weight: bold;" +
-                    "-fx-text-fill: #292929;"
-                );
-                CheckBox check = new CheckBox();
-                check.setStyle(
-                    "-fx-font-family: 'Arial';" +
-                    "-fx-font-size: 13px;" +
-                    "-fx-font-weight: bold;" +
-                    "-fx-text-fill: #333333;"
-                );
-                check.setScaleX(1.15);
-                check.setScaleY(1.15);
-                check.setSelected(m.isWatched());
-                if (m.isWatched()) {
-                    check.setText("Watched");
-                } else {
-                    check.setText("Not Watched");
-                }
-                check.setOnAction(c -> {
-                    m.setWatched(check.isSelected());
-                    if (m.isWatched()) {
-                        check.setText("Watched");
-                    } else {
-                        check.setText("Not Watched");
-                    }
-                    try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
-                        for (Media m1 : manager.getMedia()) {
-                            pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
-                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.isWatched());
-                        }
-                    } catch (FileNotFoundException fe) {
-                        fe.printStackTrace();
-                    }
-                });
-                VBox movie = new VBox(10);
-                if (imageView != null) {
-                    movie.getChildren().add(imageView);
-                }
-                movie.getChildren().addAll(l, check);
-                grid2.add(movie, col, row);
-                col++;
-                if (col == 2) {
-                    col = 0;
-                    row++;
-                }
-                i++;
-            }
-            Button back = new Button("Back to HomePage");
-            back.setOnAction(ee -> {
-                stage.setScene(scene);
-            });
-            ScrollPane scrollPane = new ScrollPane();
-            scrollPane.setFitToWidth(true);
-            scrollPane.setContent(grid2);
-            VBox layout = new VBox(back, scrollPane);
-            Scene scene2 = new Scene(layout, 1000, 700);
-            stage.setScene(scene2);
-            stage.show();
-        });
-        button3.setOnAction(e -> {
-            int row = 0;
-            int col = 0;
-            int i = 1;
-            GridPane grid3 = new GridPane();
-            grid3.setHgap(40);
-            grid3.setVgap(30);
-            grid3.setPadding(new Insets(5, 20, 20, 20));
-            for (Media m : manager.getNonMCU()) {
-                Image image = null;
-                ImageView imageView = null;
-                for (TMDBMediaDetails tmdb : tmdbDetails) {
-                    if (m.getTitle().equals(tmdb.getTitle())) {
-                        image = new Image(tmdb.getPosterURL());
+                    if (media.getTitle().equals(tmdbMediaDetails.getTitle())) {
+                        image = new Image(tmdbMediaDetails.getPosterURL());
                         imageView = new ImageView(image);
                         imageView.setFitWidth(180);
                         imageView.setFitHeight(270);
@@ -353,196 +158,84 @@ public class Main extends Application {
                         break;
                     }
                 }
-                Label l;
-                if (m.isSecretWarsWatch()) {
-                    Text title = new Text("" + i + ". " + m.toString());
+            }
+            Label label;
+            if (media.isSecretWarsWatch()) {
+                if (mediaList.equals(manager.getSecretWarsWatchOrder())) {
+                    label = new Label("" + mediaNumber + ". " + media.toString());
+                } else {
+                    Text title = new Text("" + mediaNumber + ". " + media.toString());
                     Text important = new Text(" [Important for Secret Wars]");
                     important.setStyle("-fx-fill: green;");
                     TextFlow flow = new TextFlow(title, important);
-                    l = new Label();
-                    l.setGraphic(flow);
-                } else {
-                    l = new Label("" + i + ". " + m.toString());
+                    label = new Label();
+                    label.setGraphic(flow);
                 }
-                l.setWrapText(true);
-                l.setMaxWidth(350);
-                l.setStyle(
-                    "-fx-font-family: 'Arial';" +
-                    "-fx-font-size: 17px;" +
-                    "-fx-font-weight: bold;" +
-                    "-fx-text-fill: #292929;"
-                );
-                CheckBox check = new CheckBox();
-                check.setStyle(
-                    "-fx-font-family: 'Arial';" +
-                    "-fx-font-size: 13px;" +
-                    "-fx-font-weight: bold;" +
-                    "-fx-text-fill: #333333;"
-                );
-                check.setScaleX(1.15);
-                check.setScaleY(1.15);
-                check.setSelected(m.isWatched());
-                if (m.isWatched()) {
+            } else {
+                label = new Label("" + mediaNumber + ". " + media.toString());
+            }
+            label.setWrapText(true);
+            label.setMaxWidth(350);
+            label.setStyle(
+                "-fx-font-family: 'Arial';" +
+                "-fx-font-size: 17px;" +
+                "-fx-font-weight: bold;" +
+                "-fx-text-fill: #292929;"
+            );
+            CheckBox check = new CheckBox();
+            check.setStyle(
+                "-fx-font-family: 'Arial';" +
+                "-fx-font-size: 13px;" +
+                "-fx-font-weight: bold;" +
+                "-fx-text-fill: #333333;"
+            );
+            check.setScaleX(1.15);
+            check.setScaleY(1.15);
+            check.setSelected(media.isWatched());
+            if (media.isWatched()) {
+                check.setText("Watched");
+            } else {
+                check.setText("Not Watched");
+            }
+            check.setOnAction(c -> {
+                media.setWatched(check.isSelected());
+                if (media.isWatched()) {
                     check.setText("Watched");
                 } else {
                     check.setText("Not Watched");
                 }
-                check.setOnAction(c -> {
-                    m.setWatched(check.isSelected());
-                    if (m.isWatched()) {
-                        check.setText("Watched");
-                    } else {
-                        check.setText("Not Watched");
+                try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
+                    for (Media media1 : manager.getMedia()) {
+                        pw.println(media1.getTitle() + "," + media1.getType() + "," + media1.getReleaseDate() + "," + media1.getChronologyOrder() + "," + 
+                                media1.isMCU() + "," + media1.isSecretWarsWatch() + "," + media1.isWatched());
                     }
-                    try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
-                        for (Media m1 : manager.getMedia()) {
-                            pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
-                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.isWatched());
-                        }
-                    } catch (FileNotFoundException fe) {
-                        fe.printStackTrace();
-                    }
-                });
-                VBox movie = new VBox(10);
-                if (imageView != null) {
-                    movie.getChildren().add(imageView);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
                 }
-                movie.getChildren().addAll(l, check);
-                grid3.add(movie, col, row);
-                col++;
-                if (col == 2) {
-                    col = 0;
-                    row++;
-                }
-                i++;
-            }
-            Button back = new Button("Back to HomePage");
-            back.setOnAction(ee -> {
-                stage.setScene(scene);
             });
-            ScrollPane scrollPane = new ScrollPane();
-            scrollPane.setFitToWidth(true);
-            scrollPane.setContent(grid3);
-            VBox layout = new VBox(back, scrollPane);
-            Scene scene3 = new Scene(layout, 1000, 700);
-            stage.setScene(scene3);
-            stage.show();
-        });
-        button4.setOnAction(e -> {
-            int row = 0;
-            int col = 0;
-            int i = 1;
-            GridPane grid4 = new GridPane();
-            grid4.setHgap(40);
-            grid4.setVgap(30);
-            grid4.setPadding(new Insets(5, 20, 20, 20));
-            for (Media m : manager.getSecretWarsWatchOrder()) {
-                Image image = null;
-                ImageView imageView = null;
-                for (TMDBMediaDetails tmdb : tmdbDetails) {
-                    if ((m.getType().equalsIgnoreCase("TV Show")
-                        || m.getType().equalsIgnoreCase("TVShow")) && (m.getTitle().contains(" Season"))) {
-                        if (m.getTitle().contains(": Season")) {
-                            String[] name = m.getTitle().split(": Season");
-                            if (name[0].equals(tmdb.getTitle())) {
-                                image = new Image(tmdb.getPosterURL());
-                                imageView = new ImageView(image);
-                                imageView.setFitWidth(180);
-                                imageView.setFitHeight(270);
-                                imageView.setPreserveRatio(true);
-                                break;
-                            }
-                        } else {
-                            String[] name = m.getTitle().split(" Season");
-                            if (name[0].equals(tmdb.getTitle())) {
-                                image = new Image(tmdb.getPosterURL());
-                                imageView = new ImageView(image);
-                                imageView.setFitWidth(350);
-                                imageView.setFitHeight(250);
-                                imageView.setPreserveRatio(true);
-                                break;
-                            }
-                        }
-                    } else {
-                        if (m.getTitle().equals(tmdb.getTitle())) {
-                            image = new Image(tmdb.getPosterURL());
-                            imageView = new ImageView(image);
-                            imageView.setFitWidth(350);
-                            imageView.setFitHeight(250);
-                            imageView.setPreserveRatio(true);
-                            break;
-                        }
-                    }
-                }
-                Label l = new Label("" + i + ". " + m.toString());
-                l.setWrapText(true);
-                l.setMaxWidth(350);
-                l.setStyle(
-                    "-fx-font-family: 'Arial';" +
-                    "-fx-font-size: 17px;" +
-                    "-fx-font-weight: bold;" +
-                    "-fx-text-fill: #292929;"
-                );
-                CheckBox check = new CheckBox();
-                check.setStyle(
-                    "-fx-font-family: 'Arial';" +
-                    "-fx-font-size: 13px;" +
-                    "-fx-font-weight: bold;" +
-                    "-fx-text-fill: #333333;"
-                );
-                check.setScaleX(1.15);
-                check.setScaleY(1.15);
-                check.setSelected(m.isWatched());
-                if (m.isWatched()) {
-                    check.setText("Watched");
-                } else {
-                    check.setText("Not Watched");
-                }
-                check.setOnAction(c -> {
-                    m.setWatched(check.isSelected());
-                    if (m.isWatched()) {
-                        check.setText("Watched");
-                    } else {
-                        check.setText("Not Watched");
-                    }
-                    try (PrintWriter pw = new PrintWriter(new FileOutputStream("data/marvel_media.csv"))) {
-                        for (Media m1 : manager.getMedia()) {
-                            pw.println(m1.getTitle() + "," + m1.getType() + "," + m1.getReleaseDate() + "," + m1.getChronologyOrder() + "," + 
-                                    m1.isMCU() + "," + m1.isSecretWarsWatch() + "," + m1.isWatched());
-                        }
-                    } catch (FileNotFoundException fe) {
-                        fe.printStackTrace();
-                    }
-                });
-                VBox movie = new VBox(10);
-                if (imageView != null) {
-                    movie.getChildren().add(imageView);
-                }
-                movie.getChildren().addAll(l, check);
-                grid4.add(movie, col, row);
-                col++;
-                if (col == 2) {
-                    col = 0;
-                    row++;
-                }
-                i++;
+            VBox mediaBox = new VBox(10);
+            if (imageView != null) {
+                mediaBox.getChildren().add(imageView);
             }
-            Button back = new Button("Back to HomePage");
-            back.setOnAction(ee -> {
-                stage.setScene(scene);
-            });
-            ScrollPane scrollPane = new ScrollPane();
-            scrollPane.setFitToWidth(true);
-            scrollPane.setContent(grid4);
-            VBox layout = new VBox(back, scrollPane);
-            Scene scene4 = new Scene(layout, 1000, 700);
-            stage.setScene(scene4);
-            stage.show();
+            mediaBox.getChildren().addAll(label, check);
+            grid.add(mediaBox, col, row);
+            col++;
+            if (col == 2) {
+                col = 0;
+                row++;
+            }
+            mediaNumber++;
+        }
+        Button back = new Button("Back to HomePage");
+        back.setOnAction(ee -> {
+            stage.setScene(homeScene);
         });
-        button5.setOnAction(e -> {
-            stage.close();
-        });
-        stage.setScene(scene);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
+        scrollPane.setContent(grid);
+        VBox layout = new VBox(back, scrollPane);
+        Scene categoryScene = new Scene(layout, 1000, 700);
+        stage.setScene(categoryScene);
         stage.show();
-    }
+     }
 }
